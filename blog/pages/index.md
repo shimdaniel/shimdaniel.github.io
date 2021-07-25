@@ -23,9 +23,6 @@ and includes all the features that I might want.
 
 ## Features
 
-What are these features? You should see the {% include doc.html name="Getting Started" path="getting-started" %}
-guide for a complete summary. Briefly:
-
  - *User interaction* including consistent permalinks, links to ask questions via GitHub issues, and edit the file on GitHub directly.
  - *Search* across posts, documentation, and other site pages, with an ability to exclude from search.
  - *External Search* meaning an ability to link any page tag to trigger an external search.
@@ -36,6 +33,4 @@ guide for a complete summary. Briefly:
  - *Templates* or specifically, "includes" that make it easy to create an alert, documentation link, or other content.
  - *Continuous Integration* recipes to preview the site
 
-
-For features, getting started with development, see the {% include doc.html name="Getting Started" path="getting-started" %} page. Would you like to request a feature or contribute?
 [Open an issue]({{ site.repo }}/issues)
