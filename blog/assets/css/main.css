@@ -15461,8 +15461,8 @@ a.text-dark:focus {
     font-family: 'font awesome 5 free';
     font-style: normal;
     font-weight: 900;
-    src: url(../webfonts/fa-solid-900.eot);
-    src: url(../webfonts/fa-solid-900.eot?#iefix) format("embedded-opentype"), url(../webfonts/fa-solid-900.woff2) format("woff2"), url(../webfonts/fa-solid-900.woff) format("woff"), url(../webfonts/fa-solid-900.ttf) format("truetype"), url(../webfonts/fa-solid-900.svg#fontawesome) format("svg")
+    src: url(/blog/assets/webfonts/fa-solid-900.eot);
+    src: url(/blog/assets/webfonts/fa-solid-900.eot?#iefix) format("embedded-opentype"), url(/blog/assets/webfonts/fa-solid-900.woff2) format("woff2"), url(/blog/assets/webfonts/fa-solid-900.woff) format("woff"), url(/blog/assets/webfonts/fa-solid-900.ttf) format("truetype"), url(/blog/assets/webfonts/fa-solid-900.svg#fontawesome) format("svg")
 }
 
 .fa,
@@ -15479,8 +15479,8 @@ a.text-dark:focus {
     font-family: 'font awesome 5 brands';
     font-style: normal;
     font-weight: 400;
-    src: url(../webfonts/fa-brands-400.eot);
-    src: url(../webfonts/fa-brands-400.eot?#iefix) format("embedded-opentype"), url(../webfonts/fa-brands-400.woff2) format("woff2"), url(../webfonts/fa-brands-400.woff) format("woff"), url(../webfonts/fa-brands-400.ttf) format("truetype"), url(../webfonts/fa-brands-400.svg#fontawesome) format("svg")
+    src: url(/blog/assets/webfonts/fa-brands-400.eot);
+    src: url(/blog/assets/webfonts/fa-brands-400.eot?#iefix) format("embedded-opentype"), url(/blog/assets/webfonts/fa-brands-400.woff2) format("woff2"), url(/blog/assets/webfonts/fa-brands-400.woff) format("woff"), url(/blog/assets/webfonts/fa-brands-400.ttf) format("truetype"), url(/blog/assets/webfonts/fa-brands-400.svg#fontawesome) format("svg")
 }
 
 .fab {
