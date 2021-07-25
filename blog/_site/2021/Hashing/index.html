@@ -23,20 +23,20 @@
 <link rel="icon" type="image/png" href="/blog/assets/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/blog/assets/favicons/android-192x192.png"sizes="192x192">
 
-<title>Tags Index</title>
-<meta property="og:title" content="Tags Index" />
+<title>Hashing</title>
+<meta property="og:title" content="Hashing" />
 <meta property="og:description" content="Hi
 " />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://localhost:4000" />
 <meta property="og:site_name" content="http://localhost:4000" />
 
-<meta itemprop="name" content="Tags Index">
+<meta itemprop="name" content="Hashing">
 <meta itemprop="description" content="Hi
 ">
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Tags Index"/>
+<meta name="twitter:title" content="Hashing"/>
 <meta name="twitter:description" content="Hi
 "/>
 
@@ -192,12 +192,6 @@ $(document).ready(function() {
                     </a>
                   </li>
                   
-                    <ul>
-                      <li class="collapse show" id="">
-                        
-                      </li>
-                    </ul>
-                  
                 
               </ul>
             </li>
@@ -211,8 +205,8 @@ $(document).ready(function() {
           </div>
           <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
               <div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
-                  <a href="https://github.com/shimdaniel/shimdaniel.github.io/edit/master/pages/tags.html" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-<a href="https://github.com/shimdaniel/shimdaniel.github.io/issues/new?labels=question&title=Question:&body=Question on: https://github.com/shimdaniel/shimdaniel.github.io/tree/master/pages/tags.html" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+                  <a href="https://github.com/shimdaniel/shimdaniel.github.io/edit/master/_posts/2021-07-25-Hashing.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+<a href="https://github.com/shimdaniel/shimdaniel.github.io/issues/new?labels=question&title=Question:&body=Question on: https://github.com/shimdaniel/shimdaniel.github.io/tree/master/_posts/2021-07-25-Hashing.md" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
 <a href="https://github.com/shimdaniel/shimdaniel.github.io/issues/new" target="_blank"><i class="fas fa-tasks fa-fw"></i> Create project issue</a>
 <!-- this will parse through the header fields and add a button to open
      an issue / ask a question on Github. The editable field should be in
@@ -230,42 +224,91 @@ $(document).ready(function() {
 	      <ol class="breadcrumb spb-1">
               
               
+                <li class="breadcrumb-item">
+                  <a href="http://localhost:4000/blog/2021/">2021</a>
+                </li>
+                
                 <li class="breadcrumb-item active" aria-current="page">
-	          <a href="http://localhost:4000/blog/tags/">Tags Index</a>
+	          <a href="http://localhost:4000/blog/2021/Hashing/">Hashing</a>
                 </li>
                 
 	      </ol>
            </nav>
            <div class="td-content">
-	      <h1 id="tags-index">Tags Index</h1>
+	      <!-- Copyright 2019-2021 Vanessa Sochat-->
+<h1 style="margin-bottom:0px">Hashing</h1>
+
+<span class="post-date" style="font-style: italic;">July 25, 2021</span>
+<h1 id="해싱">해싱</h1>
+<ul>
+  <li><strong>해싱(hashing)</strong> : 키값을 비교하여 찾는 방법이 아니라 산술적인 연산을 이용하여 키가 있는 위치를 계산하여 찾는방법.</li>
+  <li><strong>해시테이블</strong> : 해싱함수에 의해 계산된 주소의 위치항목을 저장한 표.<br />
+ n개의 버킷과 m개의 슬롯으로 구성한다.</li>
+</ul>
+
+<h2 id="해싱-검색-방법">해싱 검색 방법</h2>
+<ul>
+  <li>
+    <p>해싱검색은 해싱함수를 계산하여 구한 주소 주소가 해시테이블에 있는지 검색.</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  자리지정을 위한 학번(키값)입력 ► 자리지정(해싱함수) ► 강의실(해시테이블) 
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="해싱구조">해싱구조</h2>
+<ul>
+  <li>
+    <p>동거자<br />
+<code class="language-plaintext highlighter-rouge">&gt; 서로 다른 키값을 가지지만 해싱함수에 의해서 같은 버킷에 저장긴 키값들.</code></p>
+  </li>
+  <li>
+    <p>충돌<br />
+<code class="language-plaintext highlighter-rouge">&gt; 서로 다른 키값에 대해서 함수에 의해 버킷주소가 같은 경우.</code><br />
+<code class="language-plaintext highlighter-rouge">&gt; 포화버킷 상태에서 같은 버킷주소에 키값이 지정받고 충돌이 발생하면 오버플로우가된다.</code></p>
+  </li>
+  <li>
+    <p>키값밀도<br />
+<code class="language-plaintext highlighter-rouge">&gt; 현재 해시테이블에 저장되어 실제 사용되고 있는 키값의 갯수의 정도</code><br />
+<code class="language-plaintext highlighter-rouge">&gt; 키값밀도 = 실제 사용중인 키값의 개수 / 사용 가능한 키값의 개수</code></p>
+  </li>
+  <li>
+    <p>적재밀도<br />
+<code class="language-plaintext highlighter-rouge">&gt; 해시테이블에 저장이전 실제로 테이블에 저장되고 저장된것을 사용되는 키값의 갯수의 정도 </code></p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  □ 적재밀도 
+  = 실제 사용중인 키값의 개수 / 저장 가능한 전체 키값의 개수  
+  = 실제 사용중인 키값의 개수 / 버킷 개수 * 슬롯 개수
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="해싱함수">해싱함수</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>□ 키값을 원소의 위치로 변환하는 함수. 0 ~ N-1 사이의 버킷주소를 만듬.
+□ 좋은해싱조건 : 쉬운계산, 적은충돌
+</code></pre></div></div>
+<ul>
+  <li><strong>중간제곱함수</strong> : 키값을 제곱한 결과값에서 중간에 있는 적당한? 비트를 주소로 사용하는방법.<br />
+ex) <u>00110101 10100111 ^ = _00010110011**11101001**001011110001_ 
+가운데 _11101001_ 의 10진수 233이 해시테이블의 버킷주소가된다.</u></li>
+  <li><strong>제산함수</strong> : 나머지 연산자 mod를 사용하요 키값k를 해시테이블의 크기 M으로 나눈 나머지를 해시주소로 사용하는방법. <code class="language-plaintext highlighter-rouge">h(k) = k mod M</code></li>
+  <li><strong>승산함수</strong> : 곱하기연산을 사용하는 방법으로 키값k와 정해진실수 A를 곱한 결과에서 소수점 이하부분만을 테이블의 크기 M과 곱하여 그 정수값을 주소로 사용하는 방법. <code class="language-plaintext highlighter-rouge">h(k) = (xA mod 1) * M</code></li>
+  <li><strong>접지함수</strong> : 키의 비트수가 해시테이블의 인덱스 비트수보다 큰 경우에 주로 사용하는방법.<br />
+<span style="color:gray"><em>이동접지함수</em></span> - 인덱스자릿수로 키값을 끝까지 쪼개어진 수들을 더한값을 주소로함.<br />
+<span style="color:gray"><em>경계접지함수</em></span> - 인덱스자릿수로 키값을 끝까지 쪼개어진 수들의 각 경계를 기준으로 접어서 더한값을 주소로함.</li>
+  <li><strong>숫자분석함수</strong> : 키값을 이루고 있는 각자릿수의 분포를 분석하여 고르게 분포된 숫자를 조합 하여 해시주소로 사용하는방법. ex) <u>학번[200804112] : 2008(년도) 04(학과) 1(주/야간) 12(학생번호) 이 중 고르게분포된 [주/야간 번호 + 학생번호]를 조합한 숫자로 해시테이블 주소로 만든다.</u></li>
+  <li><strong>진법변환함수</strong> : 키값이 10진수가아닌 다른 진수일때 10진수로 변환하고 해시테이블주소로 필요한 자릿수만큼만 하위 자릿수를 사용하는방법.</li>
+  <li><strong>비트추출함수</strong> : 해시테이블크기가 2^k 일때 키값을 이진비트로 놓고 임의의 위치에 있는 비트들을 추출하여 주소로 사용하는방법.(충돌가능성이 많아 사전에 비트분석필요)</li>
+</ul>
+
+<h2 id="오버플로우-처리방법">오버플로우 처리방법</h2>
+<ul>
+  <li><strong>선형개방주소법</strong> :  해당 버킷에 빈슬롯이 없어서 오플발생하면 다음버킷에 빈슬롯을 순차적으로 찾는방법.</li>
+  <li><strong>체이닝</strong> : 해시테이블의 구조를 변경하여 각 버킷에 하나이상의 키값을 저장할 수 있도록 하는방법.<br />
+버킷에 슬롯을 동적으로 삽입,삭제하기 위해서 연결리스트를 사용하여 선형검색한다.</li>
+</ul>
 
 
-
-<h3 id="" class="linked-section"></h3>
-<div class="post-list" style="margin-bottom:40px">
-    
-</div><h3 id="github" class="linked-section">github</h3>
-<div class="post-list" style="margin-bottom:40px">
-    
-<div class="tag-entry">
-    <a href="/blog/docs/getting-started">Getting Started</a>
-        <time style="font-style:italic; float:right" datetime="2021-07-25T21:55:13+09:00">July 25, 2021</time>
-    </div>
-</div><h3 id="jekyll" class="linked-section">jekyll</h3>
-<div class="post-list" style="margin-bottom:40px">
-    
-<div class="tag-entry">
-    <a href="/blog/docs/getting-started">Getting Started</a>
-        <time style="font-style:italic; float:right" datetime="2021-07-25T21:55:13+09:00">July 25, 2021</time>
-    </div>
-</div><h3 id="survey" class="linked-section">survey</h3>
-<div class="post-list" style="margin-bottom:40px">
-    
-<div class="tag-entry">
-    <a href="/blog/docs/extras/index">Extras</a>
-        <time style="font-style:italic; float:right" datetime="2021-07-25T21:55:13+09:00">July 25, 2021</time>
-    </div>
-</div>
 <script
   src="/blog/assets/js/jquery-3.3.1/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -315,7 +358,8 @@ $.each(headers, function(i, header){
 })
 </script>
 
-
+<script>
+$('h1').first().append('<div></div>')</script>
 
 	
               

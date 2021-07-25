@@ -23,20 +23,20 @@
 <link rel="icon" type="image/png" href="/blog/assets/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/blog/assets/favicons/android-192x192.png"sizes="192x192">
 
-<title>Tags Index</title>
-<meta property="og:title" content="Tags Index" />
+<title>Interfacecollection</title>
+<meta property="og:title" content="Interfacecollection" />
 <meta property="og:description" content="Hi
 " />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://localhost:4000" />
 <meta property="og:site_name" content="http://localhost:4000" />
 
-<meta itemprop="name" content="Tags Index">
+<meta itemprop="name" content="Interfacecollection">
 <meta itemprop="description" content="Hi
 ">
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Tags Index"/>
+<meta name="twitter:title" content="Interfacecollection"/>
 <meta name="twitter:description" content="Hi
 "/>
 
@@ -192,12 +192,6 @@ $(document).ready(function() {
                     </a>
                   </li>
                   
-                    <ul>
-                      <li class="collapse show" id="">
-                        
-                      </li>
-                    </ul>
-                  
                 
               </ul>
             </li>
@@ -211,8 +205,8 @@ $(document).ready(function() {
           </div>
           <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
               <div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
-                  <a href="https://github.com/shimdaniel/shimdaniel.github.io/edit/master/pages/tags.html" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-<a href="https://github.com/shimdaniel/shimdaniel.github.io/issues/new?labels=question&title=Question:&body=Question on: https://github.com/shimdaniel/shimdaniel.github.io/tree/master/pages/tags.html" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+                  <a href="https://github.com/shimdaniel/shimdaniel.github.io/edit/master/_posts/2021-07-25-InterfaceCollection.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+<a href="https://github.com/shimdaniel/shimdaniel.github.io/issues/new?labels=question&title=Question:&body=Question on: https://github.com/shimdaniel/shimdaniel.github.io/tree/master/_posts/2021-07-25-InterfaceCollection.md" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
 <a href="https://github.com/shimdaniel/shimdaniel.github.io/issues/new" target="_blank"><i class="fas fa-tasks fa-fw"></i> Create project issue</a>
 <!-- this will parse through the header fields and add a button to open
      an issue / ask a question on Github. The editable field should be in
@@ -230,42 +224,100 @@ $(document).ready(function() {
 	      <ol class="breadcrumb spb-1">
               
               
+                <li class="breadcrumb-item">
+                  <a href="http://localhost:4000/blog/2021/">2021</a>
+                </li>
+                
                 <li class="breadcrumb-item active" aria-current="page">
-	          <a href="http://localhost:4000/blog/tags/">Tags Index</a>
+	          <a href="http://localhost:4000/blog/2021/InterfaceCollection/">Interfacecollection</a>
                 </li>
                 
 	      </ol>
            </nav>
            <div class="td-content">
-	      <h1 id="tags-index">Tags Index</h1>
+	      <!-- Copyright 2019-2021 Vanessa Sochat-->
+<h1 style="margin-bottom:0px">Interfacecollection</h1>
+
+<span class="post-date" style="font-style: italic;">July 25, 2021</span>
+<h2 id="컬렉션-프레임워크collection-framework">컬렉션 프레임워크(collection framework)</h2>
+<h3 id="데이터를-저장하는-자료-구조와-데이터를-처리하는-알고리즘을-구조화하여-javautil-패키지로-구현해-놓은-컨테이너-클래스">데이터를 저장하는 자료 구조와 데이터를 처리하는 알고리즘을 구조화하여 java.util 패키지로 구현해 놓은 컨테이너 클래스.</h3>
+
+<h4 id="컬렉션-프레임워크-구조-및-종류">컬렉션 프레임워크 구조 및 종류</h4>
+<ul>
+  <li>Superinterfaces
+    <ul>
+      <li>Iterable
+        <ul>
+          <li>Collection 인터페이스에서 Iterable를 확장했는데 Iterable 인터페이스는 forEach(Consumer&lt;? super T&gt; action), Iterable(), spliterator() 메소드가 유일하다.
+            <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public interface Collection&lt;E&gt; extends Iterable&lt;E&gt;
+</code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Subinterfaces
+    <ul>
+      <li>BeanContext</li>
+      <li>BeanContextServices</li>
+      <li>BlockingDeque<E></E></li>
+      <li>BlockingQueue<E></E></li>
+      <li>Deque<E></E></li>
+      <li><strong>List<E>&lt;/Strong&gt;</E></strong></li>
+      <li>NavigableSet<E></E></li>
+      <li><strong>Queue<E>&lt;/Strong&gt;</E></strong></li>
+      <li><strong>Set<E>&lt;/Strong&gt;</E></strong></li>
+      <li>SortedSet<E></E></li>
+      <li>TransferQueue<E></E></li>
+    </ul>
+  </li>
+  <li>Implementing Classes
+    <ul>
+      <li>AbstractCollection</li>
+      <li>AbstractList</li>
+      <li>AbstractQueue</li>
+      <li>AbstractSequentialList</li>
+      <li>AbstractSet</li>
+      <li>ArrayBlockingQueue</li>
+      <li>ArrayDeque</li>
+      <li><strong>ArrayList</strong></li>
+      <li>AttributeList</li>
+      <li>BeanContextServicesSupport</li>
+      <li>BeanContextSupport</li>
+      <li>ConcurrentHashMap.KeySetView</li>
+      <li>ConcurrentLinkedDeque</li>
+      <li>ConcurrentLinkedQueue</li>
+      <li>ConcurrentSkipListSet</li>
+      <li>CopyOnWriteArrayList</li>
+      <li>CopyOnWriteArraySet</li>
+      <li>DelayQueue</li>
+      <li>EnumSet</li>
+      <li><strong>HashSet</strong></li>
+      <li>JobStateReasons</li>
+      <li>LinkedBlockingDeque</li>
+      <li>LinkedBlockingQueue</li>
+      <li><strong>LinkedHashSet</strong></li>
+      <li><strong>LinkedList</strong></li>
+      <li>LinkedTransferQueue</li>
+      <li>PriorityBlockingQueue</li>
+      <li>PriorityQueue</li>
+      <li>RoleList</li>
+      <li>RoleUnresolvedList</li>
+      <li><strong>Stack</strong></li>
+      <li>SynchronousQueue</li>
+      <li><strong>TreeSet</strong></li>
+      <li><strong>Vector</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<p>##자주쓰는컬렉션</p>
+<ul>
+  <li>Interface : List, Queue, Set</li>
+  <li>Class : ArrayList, HashSet, LinkedList, LinkedHashSet, Stack, TreeSet, Vector</li>
+</ul>
 
 
-
-<h3 id="" class="linked-section"></h3>
-<div class="post-list" style="margin-bottom:40px">
-    
-</div><h3 id="github" class="linked-section">github</h3>
-<div class="post-list" style="margin-bottom:40px">
-    
-<div class="tag-entry">
-    <a href="/blog/docs/getting-started">Getting Started</a>
-        <time style="font-style:italic; float:right" datetime="2021-07-25T21:55:13+09:00">July 25, 2021</time>
-    </div>
-</div><h3 id="jekyll" class="linked-section">jekyll</h3>
-<div class="post-list" style="margin-bottom:40px">
-    
-<div class="tag-entry">
-    <a href="/blog/docs/getting-started">Getting Started</a>
-        <time style="font-style:italic; float:right" datetime="2021-07-25T21:55:13+09:00">July 25, 2021</time>
-    </div>
-</div><h3 id="survey" class="linked-section">survey</h3>
-<div class="post-list" style="margin-bottom:40px">
-    
-<div class="tag-entry">
-    <a href="/blog/docs/extras/index">Extras</a>
-        <time style="font-style:italic; float:right" datetime="2021-07-25T21:55:13+09:00">July 25, 2021</time>
-    </div>
-</div>
 <script
   src="/blog/assets/js/jquery-3.3.1/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -315,7 +367,8 @@ $.each(headers, function(i, header){
 })
 </script>
 
-
+<script>
+$('h1').first().append('<div></div>')</script>
 
 	
               

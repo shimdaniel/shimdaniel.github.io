@@ -23,20 +23,20 @@
 <link rel="icon" type="image/png" href="/blog/assets/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/blog/assets/favicons/android-192x192.png"sizes="192x192">
 
-<title>Tags Index</title>
-<meta property="og:title" content="Tags Index" />
+<title>Binarysearch</title>
+<meta property="og:title" content="Binarysearch" />
 <meta property="og:description" content="Hi
 " />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://localhost:4000" />
 <meta property="og:site_name" content="http://localhost:4000" />
 
-<meta itemprop="name" content="Tags Index">
+<meta itemprop="name" content="Binarysearch">
 <meta itemprop="description" content="Hi
 ">
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Tags Index"/>
+<meta name="twitter:title" content="Binarysearch"/>
 <meta name="twitter:description" content="Hi
 "/>
 
@@ -192,12 +192,6 @@ $(document).ready(function() {
                     </a>
                   </li>
                   
-                    <ul>
-                      <li class="collapse show" id="">
-                        
-                      </li>
-                    </ul>
-                  
                 
               </ul>
             </li>
@@ -211,8 +205,8 @@ $(document).ready(function() {
           </div>
           <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
               <div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
-                  <a href="https://github.com/shimdaniel/shimdaniel.github.io/edit/master/pages/tags.html" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-<a href="https://github.com/shimdaniel/shimdaniel.github.io/issues/new?labels=question&title=Question:&body=Question on: https://github.com/shimdaniel/shimdaniel.github.io/tree/master/pages/tags.html" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+                  <a href="https://github.com/shimdaniel/shimdaniel.github.io/edit/master/_posts/2021-07-25-BinarySearch.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+<a href="https://github.com/shimdaniel/shimdaniel.github.io/issues/new?labels=question&title=Question:&body=Question on: https://github.com/shimdaniel/shimdaniel.github.io/tree/master/_posts/2021-07-25-BinarySearch.md" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
 <a href="https://github.com/shimdaniel/shimdaniel.github.io/issues/new" target="_blank"><i class="fas fa-tasks fa-fw"></i> Create project issue</a>
 <!-- this will parse through the header fields and add a button to open
      an issue / ask a question on Github. The editable field should be in
@@ -230,42 +224,72 @@ $(document).ready(function() {
 	      <ol class="breadcrumb spb-1">
               
               
+                <li class="breadcrumb-item">
+                  <a href="http://localhost:4000/blog/2021/">2021</a>
+                </li>
+                
                 <li class="breadcrumb-item active" aria-current="page">
-	          <a href="http://localhost:4000/blog/tags/">Tags Index</a>
+	          <a href="http://localhost:4000/blog/2021/BinarySearch/">Binarysearch</a>
                 </li>
                 
 	      </ol>
            </nav>
            <div class="td-content">
-	      <h1 id="tags-index">Tags Index</h1>
+	      <!-- Copyright 2019-2021 Vanessa Sochat-->
+<h1 style="margin-bottom:0px">Binarysearch</h1>
+
+<span class="post-date" style="font-style: italic;">July 25, 2021</span>
+<h1 id="이진검색binarysearch">이진검색(BinarySearch)</h1>
+<ul>
+  <li>검색 원리상 정렬된 리스트에만 사용할 수 있다는 단점.</li>
+  <li>이진 탐색은 ‘퀵정렬’과 유사하게 ‘분할 후 정복(divide and conquer)’의 전략을 사용한다. 이 전략을 사용하는 알고리즘은 문제를 나누어 해결해 나가는 방법이기 때문에 실행시간은 log의 설징을 갖는다. 특히 문제의 크기를 정확히 양분하는 경우에는 최악의 경우라고 logN의 성능을 보장한다.
+데이터의 순서가 오름차순으로 되어있기 때문에 왼쪽은 중앙요소보다 작고, 오른쪽은 큽니다. 검색하려는 데이터가 중앙값보다 크다면 오른편에서 중앙 요소를 다시 선택합니다. 그리고 다시 이진 탐색을 시작합니다.</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+public static void main(String[] args) {
+    int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    System.out.println("binarySearch(4) : " + binarySearch(array, 4, array[0], array[array.length - 1]));
+    System.out.println("---------------------------------------------");
+    System.out.println("binarySearch(2) : " + binarySearch(array, 4));
+}
+
+public static int binarySearch(int array[], int value) {
+    int low = 0;
+    int high = array.length - 1;
+    while (low &lt;= high) {
+        int mid = (low + high) / 2;
+        System.out.println("index value : " + mid);
+        if (array[mid] &gt; value)
+            high = mid - 1;
+        else if (array[mid] &lt; value)
+            low = mid + 1;
+        else
+            return mid; // found
+    }
+    return -1; // not found
+}
+
+public static int binarySearch(int array[], int value, int low, int high) {
+    if (high &lt;= low)
+        return -1; // not found
+
+    int mid = (low + high) / 2;
+
+    System.out.println("index value : " + mid);
+
+    if (array[mid] &gt; value)
+        return binarySearch(array, value, low, mid - 1);
+    else if (array[mid] &lt; value)
+        return binarySearch(array, value, mid + 1, high);
+    else
+        return mid; // found
+}
 
 
+</code></pre></div></div>
 
-<h3 id="" class="linked-section"></h3>
-<div class="post-list" style="margin-bottom:40px">
-    
-</div><h3 id="github" class="linked-section">github</h3>
-<div class="post-list" style="margin-bottom:40px">
-    
-<div class="tag-entry">
-    <a href="/blog/docs/getting-started">Getting Started</a>
-        <time style="font-style:italic; float:right" datetime="2021-07-25T21:55:13+09:00">July 25, 2021</time>
-    </div>
-</div><h3 id="jekyll" class="linked-section">jekyll</h3>
-<div class="post-list" style="margin-bottom:40px">
-    
-<div class="tag-entry">
-    <a href="/blog/docs/getting-started">Getting Started</a>
-        <time style="font-style:italic; float:right" datetime="2021-07-25T21:55:13+09:00">July 25, 2021</time>
-    </div>
-</div><h3 id="survey" class="linked-section">survey</h3>
-<div class="post-list" style="margin-bottom:40px">
-    
-<div class="tag-entry">
-    <a href="/blog/docs/extras/index">Extras</a>
-        <time style="font-style:italic; float:right" datetime="2021-07-25T21:55:13+09:00">July 25, 2021</time>
-    </div>
-</div>
+
 <script
   src="/blog/assets/js/jquery-3.3.1/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -315,7 +339,8 @@ $.each(headers, function(i, header){
 })
 </script>
 
-
+<script>
+$('h1').first().append('<div></div>')</script>
 
 	
               
