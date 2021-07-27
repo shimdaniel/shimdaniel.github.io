@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Daniel&apos;s Blog</title>
+    <description>Data science enthusiast and addict :)
+</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 27 Jul 2021 20:47:07 +0900</pubDate>
+    <lastBuildDate>Tue, 27 Jul 2021 20:47:07 +0900</lastBuildDate>
+    <generator>Jekyll v3.9.0</generator>
+    
+      <item>
+        <title>Dev Doc Rest</title>
+        <description>&lt;h1 id=&quot;rest-api의-이해&quot;&gt;REST API의 이해&lt;/h1&gt;
+&lt;p&gt;“Representation State Transfer” are a way of providing interoperability between computer systems on the Internet. 인터넷상의 컴퓨터 시스템간에 상호 운용성을 제공하는 방법.. 즉, 자원을 자원의 표현으로 구분하여 정보를 주고받는 모든것을 의미하며, www과 같은 분산 하이퍼미디어 시스템을 위한 소프트웨어 아키텍처의 한 형식이다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;###배경&lt;br /&gt;
+HTTP를 명세한 주요 저자 중 한 사람인 &lt;a href=&quot;https://en.wikipedia.org/wiki/Roy_Fielding&quot;&gt;Roy Fielding&lt;/a&gt;은 현재의 아키텍처가 WEB의 본래 설계의 우수성을 많이 사용하지 못하고 있다고 생각했다. 로이는 &lt;strong&gt;&lt;em&gt;“WEB의 장점을 최대한 활용하며 어떻게 독립적으로 WEB을 보존하면서 진보시킬 수 있을까?”&lt;/em&gt;&lt;/strong&gt; 고민끝에 REST의 기반이 되는 &lt;em&gt;HTTP Object Model&lt;/em&gt; 이론을 마이크로소프트 Research에서 발표하게 되면서 시작됐다. 2년 뒤 2000년에 박사과정중이었던 로이는 현재 우리가 알고있는 “Representation State Transfer”를 120Page 분량의 박사논문에 정의하여 발표하게된다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;###선택&lt;br /&gt;
+WEB에 API 개념이 생겨나면서 마이크로소프트는 XML을 이용하여 원격으로 다른 시스템에 메소드를 호출할 수 있는 &lt;a href=&quot;https://ko.wikipedia.org/wiki/XML-RPC&quot;&gt;프로토콜(XML-RPC)&lt;/a&gt;를 만들고 &lt;a href=&quot;https://ko.wikipedia.org/wiki/SOAP&quot;&gt;SOAP&lt;/a&gt;(Simple Object Access Protocol)란 이름으로 변경한다. 2000년 SOAP를 이용한 salesforce API가 나타나고 4년후 REST를 이용한 flickr API와 비교가 되며 REST의 단순하고 규칙적고 쉬운 환경에 업계는 서비스의 대부분의 API를 REST로 대체한다. EMC와 IBM, 마이크로소프트 등 글로벌 거대 벤더들이 웹서비스와 웹 2.0 인터페이스를 기반으로 공동 개발한 CMIS(Content Management Interoperability Services: 콘텐츠 관리 상호 운용 서비스) 규격 을 발표하고, 마이크로소프트에서는 우리가 흔히 알고있는 REST API
+의 가이드라인을 만들어 발표하기까지 이른다.&lt;/p&gt;
+
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  - uri는 http://{sericeRoot}/{collection}/{id} 형식이어야함
+  - GET,PUT,DELETE,POST,HEAD,PATCH,OPTIONS 를 지원해야함  
+  - API 버저닝은 Major.minor로 하고 uri에 버전 정보를 포함시킨다. 등등..
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;하지만.. 필딩은 모두 REST가 아니다고 얘기한다. 뭐지.. REST 아키텍처 스타일을 따르지 않았단다. REST API를 위한 최고의 버저닝 전략은 버저닝을 안하는것이며, REST API는 하이퍼텍스트 기반이어야 한다는것이다. 위언급했듯 REST는 분산 하이퍼 미디어 시스템(WEB) 을 위한 아키텍처 스타일이다. 아키텍처 스타일은 일종의 제약조건들의 집합인데 이 요소들을 하이브리드 아키텍처스타일로 구성되어야한다는것이다. REST 구성의 제약조건은 다음과 같다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;client-server&lt;/strong&gt; : 자원을 갖고 있는 Server와 그 자원을 요청하는 Client 관계에서 서버는 API를 제공하고 비즈니스 로직 처리 및 데이터저장의 책임을 지니고, 클라이언트에서 컨텍스트정보들은 자기가 직접관리하여 서로간의 의존성이 줄어든다.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;stateless&lt;/strong&gt; : Client의 컨텍스트정보들을 Server에 저장하지 않아서 세션과 쿠키와 같은 context 정보를 신경쓰지 않아도 되므로 구현이 단순해진다.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;cacheable&lt;/strong&gt; : WEB에서 사용하는 기존의 인프라를 그대로 활용가능.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;uniform interface&lt;/strong&gt; : HTTP 표준에만 따른다면, 어떠한 기술이든 적용 가능.
+ 		- identification of resources : 리소스가 uri로 식별기능.
+     - manipuation of resources through representations : 메세지로 리소스 CRUD제어가능.
+     - self-descriptive messages : 메세지는 스스로 설명 할 줄 알아야함.
+     - hypermedia as the engine of application state(HATEOAS) : 애플리케이션의 상태는 Hyperlink를 이용해 전이 되어야한다.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;layered system&lt;/strong&gt; : Client ► 보안,로드밸런싱,암호화,사용자인증 등 유연한 구조가 가능. ► 순수 비지니스로직 API Server ► 다중계층으로 구성가능.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;code-on-demand&lt;/strong&gt;(optional) : 서버의 코드를 클라이언트에서 운영가능.(ex. 자바스크립트)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;로이필딩은 현재 위 REST 제약조건에 따르지않고 HTTP API 형태 임에도 불구 명칭을 REST-API라고 칭하는 관계자들에게 제발 제약도건에 따르던제 아니면 다른단어를 써라라고 전달했다. 하지만 사실 구조가체가 다르다. REST를 따를수있는 대샹이 웹페이지와 HTTP API 는 기계와 사람이기때문에 mediaType 이 시각적인 측면에서 html과 json으로 구분되기 때문이다. 
+예를들어 HTML의 Self-descriptive는 응답메세지의 Content-Type이 text/html임을 확인이 되면 HTTP 명세에 media type IANA에 등록되어있고, IANA에서 text/html의 설명을 찾는다. text/html 명세에는 http://www.w3.org/TR/html 의 링크에 명세 해석이 가능하다. 
+HATEOAS 조건또한 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;a href=&quot;&quot;&amp;gt;&amp;lt;/a&amp;gt;&lt;/code&gt; 태그를 이용해 표현된 링크를 통해 다음상태로 전달될 수 있으므로 HATEOAS를 만족한다. 반면에 JSON도 media type이 application/json 으로 표현되어 IANA에 등록도 되어있고 관련 링크를 찾아가 json 문서를 파싱하여 해석도가능하다. 하지만 내용의 정확한 속성 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ex) [{&quot;op&quot;:remove,&quot;path&quot;:&quot;/a/s/d&quot;}]&lt;/code&gt; “op”나 “path”의 각 의미들이 무엇을 의미하는지는 알수없어서 온전한 해석이 불가능하기 때문에 Self-descriptive 하지않고 다음 상태로 전이 할 링크가 없으므로 HATEOAS 또한 하지않다.&lt;/p&gt;
+
+&lt;p&gt;REST는 SOAP보다 사용하기 쉽고 간편한줄만 알았는데 복잡하고 어렵다. 사실 REST 제약조건을 모두 맞춰가며 시스템을 구현하는 RESTful 사례가 적다. 그래서 이렇게 굳이 제약조건을 전부 따져가며 구축을해야 하는가? 로이필드는 “시스템 전체를 통제(서버와 클라이언트를 전체를 제어)할 수 있다고 생각하거나, 진화에 관심이 없다면 REST에 대해 따지느라 시간을 낭비하지 말았으면한다.”라고 답변했다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;&lt;em&gt;그럼 Self-descriptive 와 HATEOAS를 만족할 수 있는방법은?&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Self-descriptive은 Media type을 IANA에 등록 하여 custom media type이나 profile link relation 등으로 만족.&lt;/li&gt;
+  &lt;li&gt;HATEOAS는 HTTP 헤더나 본문에 &lt;strong&gt;링크&lt;/strong&gt; 를 담아 REST의 조건을 만족.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Media type을 IANA에 등록을 꼭 해야하는건 아니다. 하지만 등록을하면 여러이점이있는데 누가나 쉽게 사용할 수 있고, 이름 충돌을 피할 수 있으며, 등록은 어렵지 않다고? 한다.&lt;/p&gt;
+
+&lt;p&gt;오늘날의 RESTAPI는 REST를 거의 따르지않는다. 제약조건중에서 특히 &lt;strong&gt;Self-descriptive&lt;/strong&gt; 와 &lt;strong&gt;HATEOAS&lt;/strong&gt; 를 만족하기 힘들기 때문이다. 그래도 REST를 따르며 API를 설계하겠다면 조건을 만족시켜 설계하시기 바랍니다. 그렇지 않으면 로이가 싫어합니다.^^&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ko.wikipedia.org/wiki/REST&quot;&gt;https://ko.wikipedia.org/wiki/REST&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blog.toss.im/2017/10/25/team/people/toss-developer-deview-conference/&quot;&gt;https://blog.toss.im/2017/10/25/team/people/toss-developer-deview-conference/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven&quot;&gt;https://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Tue, 27 Jul 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2021/07/27/dev-doc-rest/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021/07/27/dev-doc-rest/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>[리뷰] 리팩터링 2판</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;한빛미디어&lt;/code&gt; 출판사의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;리팩터링 2판(마틴 파울러 저/개앞맵시, 남기혁 역)&quot;&lt;/code&gt;을 읽고 작성한 리뷰입니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://shimdaniel.github.io/assets/img/review/2020-04-26-review-book-refactoring-2nd-1.jpg&quot; alt=&quot;표지&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;개정판을 소개하기 앞서 약 20년전의 초판에 대해 잠깐 설명하려 한다. 2000년 초반 학부시절 어렵사리 초판을 원서로 구했다. 미학과는 거리가 멀어보이는 딱딱해보이는 S/W 아키텍처 설계에 예술같은 개념이 숨어있다는 것에 적잖이 놀랐고, 그동안 등한시 했던 철학에 대한 새로운 시각이 정립된 것은 신선한 충격이었다.&lt;/p&gt;
+
+&lt;p&gt;되지도 않는 영어와 씨름하며 열심히 읽었던 덕분에 당시 국내에는 생소했던 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OOP의 다형성 및 상속구조에 대한 개념&lt;/code&gt;을 동년배들에 비해 빠르게 다질 수 있어 이후의 프로그래밍 실무가 정말 편했다.&lt;/p&gt;
+
+&lt;p&gt;세월이 흘러 Spring 프레임워크가 등장했을 때에도 저자 마틴 파울러의 철학이 이미 녹아있었던 덕분인지 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DI 및 IoC와 같은 커다란 변화&lt;/code&gt;도 쉽게 이해할 수 있었다.&lt;/p&gt;
+
+&lt;p&gt;뿐만이랴. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;리팩토링 자체에 대한 실무는 물론 테스트 코드 작성, 디자인 패턴&lt;/code&gt; 등 대부분의 OOP 프로그래밍에 있어 개념적으로 헤매인 기억은 없는 듯 하다.&lt;/p&gt;
+
+&lt;p&gt;이렇게 초판을 구구절절 칭찬하는 이유는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;이제 중견의 나이에 접어든 한 독자가 20년에 걸친 산 증인으로 본 도서가 개발에 얼마나 많은 도움을 주었는지 언급하는 것이 후배 프로그래머들에게 제일 도움이 되리라는 판단&lt;/code&gt;에서다.&lt;/p&gt;
+
+&lt;p&gt;초판의 장점은 2판에 있어서도 역시 유효하다. 초판을 읽고 나름 실무의 내공이 쌓인 덕인지 2판은 정말 쉽게 술술 읽혔다. 대부분의 프로그래머라면 자질구레한 이론보다는 먼저 코드로 설명하길 원할 것이다.&lt;/p&gt;
+
+&lt;p&gt;마틴 파울러는 1장부터 이론적 설명 보다는 아래 그림과 같은 예제 코드를 제시하고 직접 리팩토링이 무엇인지 느낄 수 있도록 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;바로 실습부터&lt;/code&gt; 진행한다. 
+&lt;img src=&quot;https://shimdaniel.github.io/assets/img/review/2020-04-26-review-book-refactoring-2nd-7.jpg&quot; alt=&quot;표지&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;본 리뷰도 이를 본받아 실무에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;이 책을 읽는 사용하는 방법&lt;/code&gt;부터 설명하고자 한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;먼저 &lt;부록B&gt;부터 보자. 내가 맡은 프로그램에 이런 유형의 악취가 풍기면 해당절을 읽으면 된다.&lt;/부록B&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://shimdaniel.github.io/assets/img/review/2020-04-26-review-book-refactoring-2nd-2.jpg&quot; alt=&quot;악취유형&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;첫번째 제시된 해결기법인(빨간색 네모 안)의 변수 캡슐화하기를 보면 6.6절을 참고하라고 안내되어있다. 해당절로 이동하면 직관적인 그림 하나가 눈에 들어온다. 
+&lt;img src=&quot;https://shimdaniel.github.io/assets/img/review/2020-04-26-review-book-refactoring-2nd-3.jpg&quot; alt=&quot;해결기법 세부&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;해당 유형의 리팩토링을 한 3번 정도 해보면 나중엔 그림만 봐도 실무에서 어떤 기법으로 리팩토링할지 바로 감이 잡힌다. 잘 기억이 안나면 그 밑의 아주 간단한 코드의 변화를 보면 거의 99% 바로 이해된다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;만약 악취의 유형 자체가 이해가 가지 않는다면 3장(코드에서 나는 악취)로 넘어가 가변데이터 부분을 읽으면 이해가 된다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;다시 돌아와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;책을 읽는 방법&lt;/code&gt;을 설명하고자 한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1장&lt;/code&gt;은 제일 먼저 반드시 읽어야 하는 부분이고 아마 경력 1년정도 제대로 프로그래밍을 경험하신 분이라면 재미있게 2시간 정도면 읽을 수 있을거라 본다. 실무에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;가장 자주 사용하는 리팩토링 기법&lt;/code&gt;들로 구성되어 있는데 간단히 설명하면 다음과 같다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;반복문쪼개기 + 문장슬라이드 + 함수추출 + 변수인라인&lt;/li&gt;
+  &lt;li&gt;중첩함수 난무 제거 : 중간데이터 클래스 활용&lt;/li&gt;
+  &lt;li&gt;다형성 적용 : .js 특성을 고려해 factory 패턴 활용&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2장&lt;/code&gt;에는 리팩토링을 적용 시 실무에서 고려할 사항 등 관련된 이론 전부가 짧은 페이지안에 다 녹아있다. 이론이 이렇게 짧은 책은 정말 처음본다. 그런데 필요한 내용은 다 들어있다.&lt;/p&gt;
+
+&lt;p&gt;예를 들면 아래 그림은 브랜치에 관한 설명이다. 개인적으로 GitHub 사용하며 봉착했던 문제와 해결책이 이 반쪽에 전반적으로 다 들어있다. 이를 통해 결론적으로 리팩토링을 효율적으로 사용하기 위해 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CI + TDD 개발방식&lt;/code&gt;을 추천한다는 내용이다.
+&lt;img src=&quot;https://shimdaniel.github.io/assets/img/review/2020-04-26-review-book-refactoring-2nd-6.jpg&quot; alt=&quot;브랜치&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;3장&lt;/code&gt;은 위에서 언급했다. 악취의 유형과 맡는 방법에 대한 설명인데 이게 무슨 말이냐? 리팩토링은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;언제&lt;/code&gt;해야 하는지에 대한 가이드라고 보면 된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;4장&lt;/code&gt;은 솔직히 감동이었다. 테스트 코드 작성의 중요성은 굳이 강조하지 않겠다. 2장에서 중요성을 언급했던 것에 대한 책임감인지 테스트 구축 방법을 안내한다.
+&lt;img src=&quot;https://shimdaniel.github.io/assets/img/review/2020-04-26-review-book-refactoring-2nd-4.jpg&quot; alt=&quot;테스트&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;5장&lt;/code&gt;은 겨우 2페이지이므로 가볍게 읽으시면 된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;6장 ~ 12장&lt;/code&gt;이 본 게임인데 양이 많다고 기죽지 마시길. 괜히 처음부터 읽느라 기운뺄 필요는 없다. 실무에서 필요성이 감지되면 위에서 안내한 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;이 책을 읽는 사용하는 방법&lt;/code&gt;대로 진행하시면 된다.&lt;/p&gt;
+
+&lt;p&gt;굳이 너무 읽고싶어 못참겠다면 먼저 그림과 코드 정도만 빠르게 읽어 머리속에 메타지도를 완성하시면 실무에 도움이 될 수 있을듯 하다.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;책의 장점은 20년동안 필자를 비롯한 산증인(?)들에 의해 검증이 되었다고 요약하며 끝내고 싶지만, 읽지 않았던 분들을 위해 개인적으로 인상깊었던 부분을 간단히 짚고 넘어가겠다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;리팩토링 기법도 중요하지만 사실 제일 좋은 방법은 리팩토링이 생길 여지를 주지 않는 것이다. 즉, 설계적 안목이 굉장히 중요한데 그 어떤 서적보다 빠르게 정립할 수 있다.
+    &lt;blockquote&gt;
+      &lt;p&gt;(예 75p 中) “서브클래스를 언제 사용하면 좋은지 감이 잡힐 것이다.”&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;프로그램 개발 시 완성 속도는 빠를지 몰라도 거지같이 만들어서 유지보수를 힘겹게 만드는 현상을 두고 흔히들 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;기술적 부채(Technical debt)&lt;/code&gt;라고 한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;특히, 한국의 거지같은 SI 문화가 이를 지향하는데 쉽게 말해 10명이 개발해야 하는 것을 1명이 개발하는 오너의 마법이다. 파는 사람 입장에서야 단가 후려치기에 있어 최고 스킬이겠지만, 사는 사람 입장에서는 1명이 유지보수 할 수 있는 것 10명 인건비 주며 유지보수 해야하는 셈이다.&lt;/p&gt;
+
+&lt;p&gt;이 책을 읽으면 이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;기술적 부채(Technical debt)&lt;/code&gt;가 거의 쌓이지 않는다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;속도에 대한 개념이 하나 추가된다.
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(컴퓨터의) 연산속도 + (사람의) 개발 속도&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;1분만에 돌아가는 100시간동안 만든 프로그램 vs 10분만에 돌아가는 10시간만에 만든 프로그램&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;철학에 대한 개념 재정립.
+    &lt;ul&gt;
+      &lt;li&gt;멀리있지 않다는 것, 정말 중요하다는 것을 일깨워 준다. (본 도서에 철학이라는 단어는 거의 등장하지 않음에도)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;기타의견
+    &lt;ul&gt;
+      &lt;li&gt;번역의 품질이 아주 우수하다.&lt;/li&gt;
+      &lt;li&gt;20년만의 개정판은 많은 의미를 내포한다.
+        &lt;ul&gt;
+          &lt;li&gt;20년 동안 쓸만했다는 것과, 20년 동안 많은 이들이 읽었다는 것(유용했다는 것), 그리고 개정판을 원하는 이가 많았다는 것 등..&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;실습예제가 .java에서 .js로 변경되었다.
+        &lt;ul&gt;
+          &lt;li&gt;async 및 await, promise 등의 js에 특화된 내용은 다루지 않는다. (프로그램 일반화에 초점을 맞추고 js에 초점을 맞추진 않는다.)&lt;/li&gt;
+          &lt;li&gt;단, 구현 특성 상 덕타이핑, 최상위 클래스 제약 등은 사전에 알면 도움이 된다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;마치며&lt;/strong&gt;&lt;br /&gt;
+구구절절한 말은 필요없다. 프로그래머라면, 예비 프로그래머라면, 프로그램 만들고 싶다면, 관심있다면 반드시 읽어라.&lt;/p&gt;
+
+    &lt;p&gt;안 읽으면? 당신만 손해다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://www.yes24.com/Product/Goods/89649360?Acode=101&quot;&gt;책소개 - 리팩터링 2판 : 코드 구조를 체계적으로 개선하여 효율적인 리팩터링 구현하기&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Sun, 26 Apr 2020 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/review/2020/04/26/review-book-refactoring-2nd/</link>
+        <guid isPermaLink="true">http://localhost:4000/review/2020/04/26/review-book-refactoring-2nd/</guid>
+        
+        <category>review</category>
+        
+        <category>book</category>
+        
+        <category>Refactoring</category>
+        
+        <category>Improving</category>
+        
+        <category>the</category>
+        
+        <category>Design</category>
+        
+        <category>of</category>
+        
+        <category>Existing</category>
+        
+        <category>Code</category>
+        
+        <category>리팩터링</category>
+        
+        
+        <category>review</category>
+        
+      </item>
+    
+  </channel>
+</rss>
