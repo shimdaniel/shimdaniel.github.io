@@ -58,13 +58,13 @@ SonarQube DB 기본 설정 등 Docker Image에 기능 포함됨
 ## SonarQube 프로젝트 생성
 
 - [Administration](http://localhost:9000/admin) > Projects(Management) > Create Project
-- Name : Project name (ex: "MOVILL-PASS")
-- Key : Project mapping key (ex: "sonar:MOVILL-PASS")
+- Name : Project name
+- Key : Project mapping key
 
 ## SonarQube authorization key 발급
 
 - [Administration](http://localhost:9000/admin) > Security(Users) > Tokens > Generate Tokens
-- Token name : movill_sonar_token
+- Token name : sonar_token
 
 ## SonarQube - Jenkins 연동
 
