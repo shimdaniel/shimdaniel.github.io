@@ -6,8 +6,8 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 01 Aug 2021 18:25:37 +0900</pubDate>
-    <lastBuildDate>Sun, 01 Aug 2021 18:25:37 +0900</lastBuildDate>
+    <pubDate>Sun, 01 Aug 2021 19:13:56 +0900</pubDate>
+    <lastBuildDate>Sun, 01 Aug 2021 19:13:56 +0900</lastBuildDate>
     <generator>Jekyll v3.9.0</generator>
     
       <item>
@@ -202,8 +202,12 @@ jacocoTestCoverageVerification &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Fri, 30 Jul 2021 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/dev/2021/07/30/dev-basic-sonarqube/</link>
-        <guid isPermaLink="true">http://localhost:4000/dev/2021/07/30/dev-basic-sonarqube/</guid>
+        <link>http://localhost:4000/dev/2021/07/30/dev-doc-sonarqube/</link>
+        <guid isPermaLink="true">http://localhost:4000/dev/2021/07/30/dev-doc-sonarqube/</guid>
+        
+        <category>dev</category>
+        
+        <category>doc</category>
         
         <category>sonarqube</category>
         
@@ -216,7 +220,9 @@ jacocoTestCoverageVerification &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     
       <item>
         <title>REST API의 이해</title>
-        <description>&lt;h1 id=&quot;rest-api의-이해&quot;&gt;REST API의 이해&lt;/h1&gt;
+        <description>&lt;p&gt;&lt;img src=&quot;https://shimdaniel.github.io/assets/img/post_img/2020-12-30-dev-doc-rest-1.png&quot; alt=&quot;그림1&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;rest-api의-이해&quot;&gt;REST API의 이해&lt;/h1&gt;
 &lt;h4 id=&quot;feat-그런-rest-api로-괜찮은가---deview-2017&quot;&gt;&lt;strong&gt;&lt;em&gt;feat. 그런 REST API로 괜찮은가 - DEVIEW 2017&lt;/em&gt;&lt;/strong&gt;&lt;/h4&gt;
 &lt;p&gt;“Representation State Transfer” are a way of providing interoperability between computer systems on the Internet. 인터넷상의 컴퓨터 시스템간에 상호 운용성을 제공하는 방법.. 즉, 자원을 자원의 표현으로 구분하여 정보를 주고받는 모든것을 의미하며, www과 같은 분산 하이퍼미디어 시스템을 위한 소프트웨어 아키텍처의 한 형식이다.&lt;/p&gt;
 
@@ -278,9 +284,11 @@ HATEOAS 조건또한 &lt;code class=&quot;language-plaintext highlighter-rouge&q
         <link>http://localhost:4000/dev/2021/07/27/dev-doc-rest/</link>
         <guid isPermaLink="true">http://localhost:4000/dev/2021/07/27/dev-doc-rest/</guid>
         
-        <category>sonarqube</category>
+        <category>dev</category>
         
-        <category>install</category>
+        <category>doc</category>
+        
+        <category>rest</category>
         
         
         <category>dev</category>

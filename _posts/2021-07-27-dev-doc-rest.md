@@ -1,11 +1,13 @@
 ---
 layout: post
-title:  "REST API의 이해"
-subtitle:   "What is REST?"
+title: "REST API의 이해"
+subtitle: "What is REST?"
 categories: dev
-tags: sonarqube install
+tags: dev doc rest
 comments: true
 ---
+
+![그림1](https://shimdaniel.github.io/assets/img/post_img/2020-12-30-dev-doc-rest-1.png)
 
 # REST API의 이해
 #### ___feat. 그런 REST API로 괜찮은가 - DEVIEW 2017___

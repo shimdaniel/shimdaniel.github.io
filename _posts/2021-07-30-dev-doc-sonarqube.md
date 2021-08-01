@@ -3,7 +3,7 @@ layout: post
 title: "SonarQube docker install"
 subtitle: "SonarQube docker & Jenkins 연동"
 categories: dev
-tags: sonarqube docker
+tags: dev doc sonarqube docker
 comments: true
 ---
 
